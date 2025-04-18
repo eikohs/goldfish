@@ -23,6 +23,7 @@
   bit-count bitwise-orc1 bitwise-orc2 bitwise-andc1 bitwise-andc2
   arithmetic-shift integer-length bitwise-if
   ; S7 built-in
+  bit-set?
   lognot logand logior logxor
   ash
 )
