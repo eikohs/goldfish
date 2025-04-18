@@ -1,6 +1,9 @@
 # Ignore .DS_Store (common on macOS)
 .DS_Store
 
+# Ignore .vscode
+.vscode
+
 # Ignore the .gitignore file itself
 /.gitignore
 .xmake/
