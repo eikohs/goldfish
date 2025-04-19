@@ -128,6 +128,8 @@
 (check (bit-set? 1000000 -1) => #t) ; -1 的补码所有位为 1，第 1000000 位也是 1
 (check (bit-set? 2 6) => #t)        ; 6 的二进制是 #b0110，第 2 位是 1
 (check (bit-set? 0 6) => #f)        ; 6 的二进制是 #b0110，第 0 位是 0
+(check-catch 'out-of-range
+             (bit-set? -1 1))       ; index 不能为负数
 
 (check-report)
 

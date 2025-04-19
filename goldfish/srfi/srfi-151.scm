@@ -83,7 +83,7 @@
 (define (bit-set? index n)
   (cond
     ((< index 0)
-     (error "bit-set?: Index cannot be negative" index))
+     (error 'out-of-range "bit-set?: Index cannot be negative" index))
     ((>= index 64)
      (if (< n 0)
        #t

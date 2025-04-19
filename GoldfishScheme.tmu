@@ -10207,22 +10207,22 @@
 
   <subsection|单位运算>
 
-  <paragraph|<value|srfi>bit-set?><index|bit-set><index|bit-set><typehint|><index|bit-set?><typehint|((index integer?) (i integer?)) =\<gtr\> boolean?>
+  <paragraph|<value|srfi>bit-set?><index|bit-set><index|bit-set><typehint|><index|bit-set?><typehint|((index integer?) (n integer?)) =\<gtr\> boolean?>
 
-  <strong|bit-set?> 用于检查整数 <strong|i> 的第 <strong|index> 位是否为 1（从右往左，最低位为 <strong|index>=0）。
+  <strong|bit-set?> 用于检查整数 <strong|n> 的第 <strong|index> 位是否为 1（从右往左，最低位为 <strong|index>=0）。
 
   <\scm-chunk|goldfish/srfi/srfi-151.scm|true|true>
     (define (bit-set? index n)
-    
+
     \ \ (cond
 
-    \ \ \ \ ((< index 0)
+    \ \ \ \ ((\<less\> index 0)
 
-    \ \ \ \ \ (error "bit-set?: Index cannot be negative" index))
+    \ \ \ \ \ (error 'out-of-range "bit-set?: Index cannot be negative" index))
 
-    \ \ \ \ ((>= index 64)
+    \ \ \ \ ((\<gtr\>= index 64)
 
-    \ \ \ \ \ (if (< n 0)
+    \ \ \ \ \ (if (\<less\> n 0)
 
     \ \ \ \ \ \ \ #t
 
@@ -10247,6 +10247,10 @@
     (check (bit-set? 2 6) =\<gtr\> #t) \ \ \ \ \ \ \ ; 6 的二进制是 #b0110，第 2 位是 1
 
     (check (bit-set? 0 6) =\<gtr\> #f) \ \ \ \ \ \ \ ; 6 的二进制是 #b0110，第 0 位是 0
+
+    (check-catch 'out-of-range
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ (bit-set? -1 1)) \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ; index 不能为负数
 
     \;
   </scm-chunk>
